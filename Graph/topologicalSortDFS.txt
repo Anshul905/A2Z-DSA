@@ -1,0 +1,60 @@
+void dfs(int cur, vector<int>adj[] , vector<int>&vis, stack<int>&s ){
+    vis[cur]=1;
+    for(auto child:adj[cur]){
+        if(!vis[child])
+            dfs(child,adj,vis,s);
+    }
+    s.push(cur);
+}
+
+//Function to return list containing vertices in Topological order. 
+vector<int> topoSort(int n, vector<int> adj[]) 
+{
+    
+    vector<int> vis(n,0);
+    stack<int> s;
+
+    for(int i=0;i<n;i++){
+        if( !vis[i] ){
+            dfs(i,adj,vis,s);
+        }
+    }	    
+
+    vector<int> ans;
+    while(!s.empty()){
+        ans.push_back(s.top());
+        s.pop();
+    }
+ 
+}
+
+
+
+
+
+
+
+
+
+// prints all the nodes in some order 
+// returns n no. of length always
+
+// if want to check cycle --> use map 
+
+
+// int check(int V, vector <int> &ans, vector<int> adj[]) {
+    
+//     if(V!=res.size())
+//     return 0;
+    
+//     vector<int> map(V, -1);
+//     for (int i = 0; i < V; i++) {
+//         map[res[i]] = i;
+//     }
+//     for (int i = 0; i < V; i++) {
+//         for (int v : adj[i]) {
+//             if (map[i] > map[v]) return 0;//cycle //parent should always come before child 
+//         }
+//     }
+//     return 1;
+// }

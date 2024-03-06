@@ -1,0 +1,33 @@
+vector <int> dijkstra(int n, vector<vector<int>> graph[], int src)
+{
+    vector< pair<int,int> >adj[n];
+    for(int i=0;i<n;i++){
+        for(auto x:graph[i])
+            adj[i].push_back({x[0],x[1]});
+    }
+    
+    vector<int> dis(n,INT_MAX);
+    dis[src]=0;
+    
+    // pair<int,int> == <dis[i],i>
+    
+    priority_queue< pair<int,int>, vector< pair<int,int> >, greater< pair<int,int> > > q ;
+    q.push( {0,src} );
+    
+    while( !q.empty() ){
+        int md = q.top().first ;
+        int cur = q.top().second ;
+        q.pop();            
+        for(auto x:adj[cur] ){
+            int child = x.first ;
+            int ew = x.second ; ;
+            if( dis[child]>md+ew ){
+                dis[child] = md+ew ;
+                q.push( {dis[child],child} );                    
+            }
+        }
+    }
+
+    return dis;
+}
+

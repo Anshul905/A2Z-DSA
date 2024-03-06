@@ -1,0 +1,52 @@
+hashing ( OLD PLAYLIST , 12 )
+
+------------------------------ yes -------------------------- 
+basics , sorting 
+Recusrion ( OLD PLAYLIST , 22 , 12 )
+Array , Binary search
+Binary Tree , Binary search Tree
+Graph
+DP
+Linked list 
+Trie ( PLAYLIST , 7 )
+
+
+------------------------------ some videos are there --------------------------
+stack & queue ( OLD PLAYLIST , 15 )
+Greedy    ( OLD PLAYLIST , 5 )
+
+
+------------------------------ not --------------------------
+String ( basic & medium , hard )
+Bit manipulation 
+sliding window & 2 pointer ( 2 pointer -> OLD PLAYLIST , 7 )
+Heaps 
+
+
+
+
+
+
+
+------------------------------ Questions --------------------------
+40 Array 
+24 String
+32 Binary Search 
+7 Sorting
+
+30 Stack & Queue 
+12 Sliding Window 
+17 Heaps 
+
+16 Greedy
+31 Linked List 
+25 Recurssion 
+
+39 Binary Tree , #16 BST 
+54 Graph 
+18 Recurssion --> 56 DP
+
+7 Trie 
+18 Bit Manipulation  
+
+

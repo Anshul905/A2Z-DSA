@@ -1,0 +1,67 @@
+graph can have multiple Spanning tree (ST) , but ovs 1 MST 
+ST 
+    n node , n-1 node , all node should be reachable from all others  
+MST 
+    ST with minimum combined egde's weigth
+
+
+PRIMS Algo 
+    finds MST
+
+    Algo
+        take the vertex out 
+        mark them as visited if not ( put the edge on MST array , update the sum variable ) 
+        take the adj node , put them in queue 
+
+    Intution : Greedy 
+
+    TC : E log E ( E is no. of edge )
+    SC : E
+
+
+Disjoint Set 
+    wheather 2 node exist in a same component or not ( IN CONSTANT TC )
+    you can find it using DFS/BFS but in O(V+E)
+
+    options : 
+        findParent() 
+            finds the parent or ultimate parent in array 
+            TC : 4*alpha == CONSTANT
+
+        Union() can be done by rank or size 
+            connects the 2 nodes 
+            TC : 4*alpha == CONSTANT ( both )
+
+    TC : 4*alpha == CONSTANT ( alpha is close to 1 )
+
+
+Kruskal's Algo
+    finds MST
+
+    Algo    
+        sort all the edges acc to weigth
+        apply Disjoint Set on all the edges to connect nodes ( if the nodes in different component then add it and it will be the parts of the MST else dont add it in MST ) 
+
+
+
+Kosaraju's Algorithm
+    Strongly connected component --> only on Directed graph
+
+    A component is called a Strongly Connected Component(SCC) only if for every possible pair of vertices (u, v) inside that component, u is reachable from v and v is reachable from u.
+
+    Steps: 
+        Sort all the nodes according to their finishing time:
+        Reverse all the edges of the entire graph:
+        Perform the DFS and count the no. of different DFS calls to get the no. of SCC:
+
+    TC : 3*(V+E)
+
+    https://takeuforward.org/graph/strongly-connected-components-kosarajus-algorithm-g-54/
+    https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz&index=179
+
+
+
+
+Two different connected components becomes a single component if a edge is added between a vertex from one component to a vertex of other component. But this is not the case in strongly connected components. Two strongly connected components doesn’t become a single strongly connected component if there is only a unidirectional edge from one SCC to other SCC.
+
+

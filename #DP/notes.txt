@@ -1,0 +1,90 @@
+Memoization --> Top down ( n to 0 , required answer to base case ) ( Recurssion )
+Tabulation --> Bottom up ( base case to required answer )
+
+overlapping subproblem --> same subproblem again and again .......... 
+thats wheer Memoization comes in , Memoization --> store subproblem results 
+
+( Recurssion ) Memoization -> Tabulation -> Space optimization 
+
+int dp[n+1];
+memset(dp,-1,sizeof dp)
+OR
+vector<int> dp(n+1,-1);
+
+cant use global variable, okk make it local and pass it throught funciton reference wise --> fun(n,dp)
+int fun(int n,vector<int> &dp){
+    .... 
+}
+
+
+Recurance steps 
+1. Express every possible in term of INDEX
+2. Do stufff on INDEX
+3. Max/Min  
+
+recursion ----> memoization ( TC reduce ) ----> tabular ( SC reduce , sometime TC also )  ---->  space optimization ( SC reduce )
+
+recursion : explore factor ^ ( recursion call [ sometime dp space | linear  ] )   [ exponential ]
+memoization : dp ka space multiply explore factore  [ quadraric/linear ]
+tabulur : dp ka size + if any max/min/sum from last row of dp  [ quadraric/linear ]
+space optimization : last row or some variable [ linear/2 ]
+further space optimization : if we dont use some part ( left or right ) of prev , we can update in pre[j] whatever we used to update in cur[j] provided we dont need pre[j] in the current iteration 
+
+if there is a prev row and prev columns , we can space optimize it 
+
+DP on 1d array , how to identify ?
+    when you need to try out all possible ways 
+    question --> count all the ways , best way , min , max , .... 
+
+
+1d DP
+Climbing stair
+Frog Jump ( 1,2 ) 
+    Frog Jump ( k ) 
+maximum sum of non-adjacent element ( subsequence - pick & non-pick )
+    house robber 
+
+
+
+
+
+
+
+2D DP
+Minimum/maximum falling path sum --> recursion TC ? 
+    why not n(elements)* 3^(m*n)?
+    i.e. 3^(m*n) for one element 
+
+
+
+
+
+DP on subsequence
+
+There are 2 type of memoization function 
+one for only positive  --> funOnlyPositive
+one for non-negative  --> funNonNegative
+
+Duplicate Not Allowed
+    for further optimization:
+        you dont need prev's right side ( for j, you dont need prev[j+1],prev[j+1],....,prev[target]) , basically we want left side that is j=0 to j=j , so we can traverse from right side and cur[j] can be stored in prev[j] because we are not going to prev[j] again in this iteration 
+
+Duplicate Allowed 
+    Recursion          : >>2^(n)    , >>stack ( n )  [ O(target)]
+    memoization        : n*target , n*target + >>stack ( n )  [ O(target)]
+    tabular            : n*target , n*target
+    space optimization : n*target , target ( linear ) ( prev + cur )
+    further space optimization : n*target , target ( linear ) ( prev  )
+
+
+    Recursion          : >>2^(n)    , stack ( n ) ????
+    TC : there is not only 2 path , you can still choose current one again  
+    SC : coin is 1 wala , recursion space will be O(target)
+
+    how further space optimization??
+        you dont need prev's left side ( for j, you dont need prev[0],prev[1],....,prev[j-1]) , basically we want only prev[j] , so we can update the prev's left side ( prev[j] each time ) , whatever we used to store in cur[j] , we can store it now in prev[j] because we are not going it in this iteration 
+
+
+
+
+DP on string 

@@ -1,0 +1,41 @@
+Dijkstra 
+    fails when there is a negative edge or negative cycle
+    if negative cycle -> infinite loop (TLE)
+    does not detect negative cycle
+    returns shortest distance from one node to all  node 
+    TC = E*log(V)
+
+
+
+Bellman
+    works with only Directed graph 
+    if undirected graph is given , make it Directed graph by adding edge to both side
+    detect negative cycle
+    src to all nodes distance  
+    
+    Algo 
+        Relax all thge edges to n-1 times 
+        Why n-1?
+            n node -> in worst case you will take n-1 edges to reach from starting node to last node 
+        How to detect negative cycle?
+            on nth iteration , if the array values keep reducing that means there is a negative edge cycle 
+            because we need n-1 iteration to get the shortest distance at worst 
+
+
+Floyd Warshell Algo 
+    multisource graph 
+    used to detect negative cycle ( but if there is a negative cycle it does not make sense to find shortest path so it is not negatuve cycle )  
+    if given undirected graph --> converted it to Directed graph
+
+    returns shortest distance from all node to all  node 
+
+    TC = V*V*V
+    TC = V*E*log(V) { using Dijkstra but there must not be negative cycle}
+
+
+    Algo
+        calculate the diatance of every vertex to every vertex via 0 then ( 1, 2, 3 , ..., n-1 )
+        ans you will get final matrix 
+
+    How to detect negative cycle?
+        if any dis[i][i] < 0 --> this means there is a negative cycle because it should not 0 and during calculation of distance via all the nodes if it gets negative value then there is a cycle 

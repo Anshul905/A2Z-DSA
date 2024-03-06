@@ -1,0 +1,28 @@
+vector<int> bfsTraversal(int n, vector<vector<int>> &adj){
+    // Write your code here.
+
+    vector<int> ans ;
+    int vis[n]={0};
+    queue<int> q;
+
+    q.push(0);
+    vis[0]=1;
+
+    while(!q.empty()){
+        int cur_node = q.front();
+        q.pop();
+        ans.push_back(cur_node);
+
+        for(auto child_node:adj[cur_node] ){
+            if(!vis[child_node]){
+                q.push( child_node );
+                vis[child_node]=1;
+            }
+        }
+        
+    }
+    return ans;
+}
+
+// TC -> n ( while loop ) + 2*E ( inner for loop )
+// SC -> 3*n -> n

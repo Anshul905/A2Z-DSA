@@ -1,0 +1,26 @@
+TYPE
+
+Full BT --> 0 or 2 Children 
+Complete BT --> n-1 level Completelely filled , node in last level should be placed as left they can 
+Perfect BT --> All leaf node should be on the same level
+Balanced BT --> height should be at max log(n)
+Degenerate / Skewed BT --> every node has single child , n nodes in n level ( like linked list ) 
+
+
+Pre/In/Post order Traversal ( DFS )
+    TC : n
+    SC : n
+
+Level order Traversal ( BFS ) 
+    TC : n
+    SC : n
+
+
+
+
+Medium Problem 
+
+height : O(n)
+balance tree : 
+    O(n*n) node*height 
+    try to solve it in o(n) --> modify height wala method 

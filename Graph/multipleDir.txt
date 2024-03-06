@@ -1,0 +1,14 @@
+int row[8] = {-2,-2,-1,-1,1,1,2,2};
+int col[8] = {1,-1,2,-2,2,-2,1,-1};
+
+
+
+int row[4] = {-1, 0, 1, 0};
+int col[4] = {0, 1, 0, -1};
+
+
+
+when sub-vector sizes is know known
+    vector<string> ans[n];
+
+

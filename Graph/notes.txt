@@ -1,0 +1,6 @@
+type of problem 
+
+dfs , bfs
+4/8 direction , normal 
+4/8 direction , boundry
+
