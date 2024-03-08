@@ -36,3 +36,6 @@ int search(vector<int>& nums, int target) {
 // if you dont want to calculate mid as this 
 //     int mid = low+(high-low)/2;
 //     then you will have to use long long while assigning low and high 
+
+
+// https://leetcode.com/problems/binary-search/
