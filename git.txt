@@ -1,0 +1,11 @@
+git add .
+git commit -m "msg"
+if you have already origin 
+    git push -u origin main
+    git push -f origin main  ( forcefully )
+
+
+first time when you add origin  
+    git remote add origin https://github.com/Anshul905/A2Z-DSA.git
+change local branch name ( master to main ) 
+    git branch -m master main

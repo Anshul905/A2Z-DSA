@@ -16,9 +16,8 @@ int lowerBound(vector<int> nums, int n, int target) {
 		}
     }
     return ans;
-
-	
 }
+
 int upperBound(vector<int> &nums, int target, int n){
 
 	// return upper_bound(nums.begin(),nums.end(), target) - nums.begin();
@@ -37,9 +36,18 @@ int upperBound(vector<int> &nums, int target, int n){
     return ans;
 
 }
+// you can also return low, it can also be the answer 
 
-// lower bound --> smallest index such nums[ind]>=target , if target>nums[n-1] , return n
-// upper bound --> smallest index such nums[ind]>target , if target>nums[n-1] , return n
+
+
+
+// lower bound --> smallest index such nums[ind]>=target , 
+    // if target<nums[0] , return 0
+    // if target>nums[n-1] , return n
+
+// upper bound --> smallest index such nums[ind]>target 
+    // if target<nums[0] , return 0
+    // if target>nums[n-1] , return n
 
 // https://www.codingninjas.com/studio/problems/lower-bound_8165382
 // https://www.codingninjas.com/studio/problems/implement-upper-bound_8165383
