@@ -36,18 +36,19 @@ int median(vector<vector<int>> &matrix, int m, int n) {
         high = max(high,matrix[i][n-1]);
     }
 
+    //get the smaller number such that no. of elements in the array <= number in the matrix > (m*n)/2 ; 
     int ans = 0 ;
     while (low <= high) {
         int mid = low + (high - low) / 2;
         
-        //get the number that are <= mid in the matrix ( n*log(m) )
+        //get the number of elements that are <= mid in the matrix ( n*log(m) )
         int smallEqual = countSmallEqual(matrix,m,n,mid);
 
-        if( smallEqual <= (m*n)/2 )
+        if (smallEqual > (m * n) / 2) { // there might be some smaller number which can still satisfy the condition
+            ans = mid;
+            high = mid - 1;
+        }else{
             low = mid+1;
-        else{
-            ans = mid ;
-            high = mid-1;
         }
     }
     return ans;
@@ -73,6 +74,6 @@ int median(vector<vector<int>> &matrix, int m, int n) {
 //       1 2 2 4  4  4 4 6 7 
 //       no of element <= 4 is (5,5,6,7) ( which will be always be more than 9/2 == (m*n)/2 )
 
-// 2.   find the smallest number or mid such that [no. of element in the matrix <= mid or number ] < (m*n)/2
+// 2.   find the smallest number such that [no. of element in the matrix <= number ] > (m*n)/2
 
 

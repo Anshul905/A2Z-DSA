@@ -19,4 +19,5 @@ int findPeakElement(vector<int>& nums) {
 
 // if the nums[mid-1] > nums[mid] then eliminates the right part 
 // similarly if nums[mid+1] > nums[mid] then eliminates the left part
-// if none of the above condition matched that means nums[mid-1] < nums[mid] < nums[mid+1]
+// if none of the above condition matched that means 
+// nums[mid] is greater than both  is nums[mid-1] < nums[mid] && nums[mid] > nums[mid+1]
