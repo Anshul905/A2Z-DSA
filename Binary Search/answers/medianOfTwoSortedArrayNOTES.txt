@@ -1,0 +1,117 @@
+given : 2 sorted array 
+Brute Force solution : ( n+m,n+m )
+    store all sorted in vector by using 2 pointer both at zero index and then get the median ( see total length : odd and even )
+
+
+
+Eliminate space 
+Better solution :  ( m+n , 1 )
+    traverse like brute force but dont store but keep track of variable which are middle two and return the result 
+
+
+
+Optimized solution : based on symmetry ( log(min(n,m)) , 1)
+arr2 : 1 12 3 4 9 11 --> n size 
+arr1 : 7 12 14 15    --> m size 
+
+binary search on shorter size array 
+if( n>m )
+    selfCall(b,a);//recusrison so now n is smaller than m 
+arr1 : 7 12 14 15
+arr2 : 1 3 4 9 11 13 
+binary search on shorter size array 
+low = 0 ( select 0 from arr1 ) , high = 4 ( since n=4 , select all from arr1 )
+n+m is 10 , we need symmetry of 5 , pairs : [0,5] , [1,4] , [2,3] ~~ [no. of elements from arr1 ,no. of elements from arr2]
+
+how to decide which part to eliminate??
+in the left symmetry ( all elemtents should be smaller than any element of right side )
+
+
+. . . . l1    | r1 . . .
+. . r1        | r2 . . . . .
+lets say l1,l2 are the element of left boundary and similarly r1,r2 are the element of right boundary 
+l1 < r1 ( always ) and it should also be smaller than r2 so [condition_1 : l1<r2  ] similarly 
+l2 < r2 ( always ) and it should also be smaller than r1 so [condition_2 : l2<r1  ]  
+if both the condition satisfies means this is the valid symmetry ( we can now calculte median. we will how will be) 
+What if both condition did not satisfied
+if l1>r2 means left symmetry has more elements from arr1, reduce the no. of element from arr1 and add more from arr2( high=mid-1 , condition is based on arr1 )
+if l2>r1 means left symmetry has more elements from arr2, reduce the no. of element from arr2 and add more from arr1 ( mid = low+1 , condition is based on arr1) 
+
+left symmetry length = (m+n+1)/2 [ if even both even , if odd left side = n/2 + 1 ]
+
+
+arr1 : 7 12 14 15
+arr2 : 1 3 4 9 11 13 
+low = 0 ( select 0 from arr1 ) , high = 4 ( since n=4 , select all from arr1 )
+n+m is 10 , we need symmetry of 5 , pairs : [0,5] , [1,4] , [2,3] ~~ [no. of elements from arr1 ,no. of elements from arr2]
+
+low=0 , high=4
+mid = 2 
+7 12    |  14 15
+1 3 4   |  9 11 13
+12>9 so high=mid-1;
+
+low=0 , high=1
+mid = 0 
+            |  7 12 14 15
+1 3 4 9 11  |  13
+11>7 so low=mid+1
+
+low=1 , high=1
+mid = 1 
+7        |  12 14 15
+1 3 4 9  |  11 13
+both condition satisfied --> so this symmnetry is cooreect 
+
+
+if m+n is even 
+    median : (max(left side) + min(right side)) / 2.0  
+else
+    median : max(left side)
+
+
+           | 10 20 30 
+1 2 3 4 5  | 
+
+7  12 14 15    |  
+1 | 3 4 9  11  
+
+
+
+
+
+
+Better solution : (  O(min(n, m)) + O(n*logn) + O(m*logm) , 1 );
+    use 2 pointer ( l = last index of arr1, r = zero index of arr2 )
+    traverse until (l>=0 && r<=m-1) and break when arr1[l] becomes less than arr2[r] and then sort both the array 
+    see where (n+m)/2 for even & (n+m)/2 and (n+m)/2 - 1 for odd 
+// code
+// int n=nums1.size() , m=nums2.size() ;
+// int l=n-1, r=0;
+// while( l>=0 && r<=m-1 ){
+//     if(nums1[l]>nums2[r]){
+//         swap(nums1[l--],nums2[r++]);
+//     }else{
+//         break;
+//     }
+// }
+// sort(nums1.begin(),nums1.end());
+// sort(nums2.begin(),nums2.end());
+
+// int s = (m+n)/2 ;
+// int f = ((m+n)/2) - 1  ;
+// if((m+n)%2==1){
+//     if(s<=n-1)
+//         return nums1[s];
+//     return nums2[s-n];
+// }else{
+//     int total = 0;
+//     if(s<=n-1)
+//         return ((double)(nums1[f]) + (double)(nums1[s]))/2.0;
+//     else if(f<=n-1)
+//         return ((double)(nums1[f]) + (double)(nums2[0]))/2.0;
+//     return ((double)(nums2[f-n]) + (double)(nums2[s-n]))/2.0;
+// }
+
+
+

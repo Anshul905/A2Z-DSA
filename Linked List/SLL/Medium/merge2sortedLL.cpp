@@ -25,4 +25,4 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
     return dummy->next;
 }
 
-// 2 pointer approach 
+// 2 pointer approach : min(n1,n2)+other  = n1+n2
